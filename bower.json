@@ -1,0 +1,22 @@
+{
+    "name": "hotac",
+    "version": "0.1.0",
+    "homepage": "https://github.com/elistevens/hotac",
+    "authors": [
+        { "name": "Eli Stevens", "homepage": "https://github.com/elistevens" }
+    ],
+    "description": "Heroes of the Atrui Cluster Web Helper",
+    "license": "MIT",
+    "private": false,
+    "main": "dist/hotac.min.js",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "tests"
+    ],
+    "dependencies": {
+        "xwing-miniatures-font": "1.0.12",
+        "jquery": "~2.1.4"
+    }
+}

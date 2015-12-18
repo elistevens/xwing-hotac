@@ -1,0 +1,9 @@
+*.swp
+_vimrc_local.vim
+.sass-cache
+coffeelint.json
+npm-debug.log
+.idea
+
+node_modules
+bower_components

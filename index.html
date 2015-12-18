@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="bower_components/xwing-miniatures-font/dist/xwing-miniatures.css">
+    <link rel="stylesheet" href="build/css/ai.css">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="build/js/hotac_data.js"></script>
+  </head>
+  <body>
+    <div id="ai-TieFighter" class="ai">
+      <table>
+        <tr>
+          <td class="far aheadleft display"><i></i><span></span></td>
+          <td class="far aheadleft"></td>
+          <td class="far ahead display"><i></i><span></span></td>
+          <td class="far aheadright"></td>
+          <td class="far aheadright display"><i></i><span></span></td>
+        </tr>
+        <tr>
+          <td class="far aheadleft"></td>
+          <td class="near aheadleft display"><i></i><span></span></td>
+          <td class="near ahead display"><i></i><span></span></td>
+          <td class="near aheadright display"><i></i><span></span></td>
+          <td class="far aheadright"></td>
+        </tr>
+        <tr>
+          <td class="far flankleft display"><i></i><span></span></td>
+          <td class="near flankleft display"><i></i><span></span></td>
+          <td class="displayship"><i></i></td>
+          <td class="near flankright display"><i></i><span></span></td>
+          <td class="far flankright display"><i></i><span></span></td>
+        </tr>
+        <tr>
+          <td class="far behindleft"></td>
+          <td class="near behindleft display"><i></i><span></span></td>
+          <td class="near behind display"><i></i><span></span></td>
+          <td class="near behindright display"><i></i><span></span></td>
+          <td class="far behindright"></td>
+        </tr>
+        <tr>
+          <td class="far behindleft display"><i></i><span></span></td>
+          <td class="far behindleft"></td>
+          <td class="far behind"></td>
+          <td class="far behindright"></td>
+          <td class="far behindright display"><i></i><span></span></td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      var TieFighter_instance = new window.shipAi["TieFighter"]()
+      TieFighter_instance.initDom("ai-TieFighter")
+    </script>
+  </body>
+</html>
