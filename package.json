@@ -1,0 +1,39 @@
+{
+    "name": "hotac",
+    "version": "0.1.0",
+    "description": "Heroes of the Atrui Cluster Web Helper",
+    "main": "express/server.coffee",
+    "private": true,
+    "scripts": {
+        "build": "make",
+        "postinstall": "./node_modules/bower/bin/bower install --config.interactive=false",
+        "start": "coffee express/server.coffee",
+        "test": "make test"
+    },
+    "author": {
+        "name": "Eli Stevens",
+        "homepage": "https://github.com/elistevens"
+    },
+    "contributors": [
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/elistevens/hotac"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "jade": "^1.6.0",
+        "sass": "^0.5.0",
+        "optimizer": "1.1.7",
+        "uglify-js": "^2.4.15"
+    },
+    "dependencies": {
+        "bower": "^1.3.9",
+        "coffee-script": "^1.8.0",
+        "express": "^4.9.0",
+        "morgan": "^1.3.0"
+    },
+    "engines": {
+        "node": "0.10.x"
+    }
+}

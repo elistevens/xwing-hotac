@@ -1,0 +1,15 @@
+div.ai table td {
+  width: 2em;
+  height: 2em;
+  vertical-align: middle;
+  text-align: center; }
+div.ai table td.far {
+  background-color: lightgreen; }
+div.ai table td.near {
+  background-color: indianred; }
+
+/*.table-bordered {*/
+/*    border: 1px solid #aaa;*/
+/*}*/
+
+/*# sourceMappingURL=ai.css.map */

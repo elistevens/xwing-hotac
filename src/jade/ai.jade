@@ -1,0 +1,72 @@
+each ship_str in ship_list
+    div.ai(id="ai-#{ship_str}")
+        table
+            tr
+                td.far.aheadleft.display
+                    i
+                    span
+                td.far.aheadleft
+                td.far.ahead.display
+                    i
+                    span
+                td.far.aheadright
+                td.far.aheadright.display
+                    i
+                    span
+            tr
+                td.far.aheadleft
+                td.near.aheadleft.display
+                    i
+                    span
+                td.near.ahead.display
+                    i
+                    span
+                td.near.aheadright.display
+                    i
+                    span
+                td.far.aheadright
+
+            tr
+                td.far.flankleft.display
+                    i
+                    span
+                td.near.flankleft.display
+                    i
+                    span
+                td.displayship
+                    i
+                td.near.flankright.display
+                    i
+                    span
+                td.far.flankright.display
+                    i
+                    span
+
+            tr
+                td.far.behindleft
+                td.near.behindleft.display
+                    i
+                    span
+                td.near.behind.display
+                    i
+                    span
+                td.near.behindright.display
+                    i
+                    span
+                td.far.behindright
+
+            tr
+                td.far.behindleft.display
+                    i
+                    span
+                td.far.behindleft
+                td.far.behind
+                td.far.behindright
+                td.far.behindright.display
+                    i
+                    span
+
+    script
+        | var #{ship_str}_instance = new window.shipAi["#{ship_str}"]()
+        | #{ship_str}_instance.initDom("ai-#{ship_str}")
+
