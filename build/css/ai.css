@@ -1,12 +1,21 @@
-div.ai table td {
-  width: 2em;
-  height: 2em;
-  vertical-align: middle;
-  text-align: center; }
-div.ai table td.far {
-  background-color: lightgreen; }
-div.ai table td.near {
-  background-color: indianred; }
+div.ai table {
+  border-collapse: collapse;
+  border: none; }
+  div.ai table tr.middle {
+    border-top: solid white 2px;
+    border-bottom: solid white 2px; }
+  div.ai table td.middle {
+    border-left: solid white 2px;
+    border-right: solid white 2px; }
+  div.ai table td {
+    width: 2em;
+    height: 2em;
+    vertical-align: middle;
+    text-align: center; }
+  div.ai table td.far {
+    background-color: lightgreen; }
+  div.ai table td.near {
+    background-color: indianred; }
 
 /*.table-bordered {*/
 /*    border: 1px solid #aaa;*/
