@@ -1,21 +1,60 @@
-div.ai table {
-  border-collapse: collapse;
-  border: none; }
-  div.ai table tr.middle {
-    border-top: solid white 2px;
-    border-bottom: solid white 2px; }
-  div.ai table td.middle {
-    border-left: solid white 2px;
-    border-right: solid white 2px; }
-  div.ai table td {
-    width: 2em;
-    height: 2em;
-    vertical-align: middle;
-    text-align: center; }
-  div.ai table td.far {
-    background-color: lightgreen; }
-  div.ai table td.near {
-    background-color: indianred; }
+@font-face {
+  font-family: kimberley;
+  src: url("../../fonts/kimberley bl.ttf"); }
+@font-face {
+  font-family: EurostileStandard;
+  src: url("../../fonts/EurostileLTStd.otf"); }
+@font-face {
+  font-family: EurostileStandardBold;
+  src: url("../../fonts/EurostileLTStd-Bold.otf"); }
+@font-face {
+  font-family: EurostileStandardOblique;
+  src: url("../../fonts/EurostileLTStd-Oblique.otf"); }
+@font-face {
+  font-family: EurostileStandardBoldOblique;
+  src: url("../../fonts/EurostileLTStd-BoldOblique.otf"); }
+@font-face {
+  font-family: BankGothicMediumBT;
+  src: url("../../fonts/Bank Gothic Medium BT.ttf"); }
+@font-face {
+  font-family: BankGothicHD;
+  src: url("../../fonts/bankgthd.ttf"); }
+body {
+  font-family: EurostileStandard; }
+
+div.ai {
+  font-family: BankGothicHD;
+  float: left;
+  margin: 5px;
+  line-height: normal; }
+  div.ai span.speed {
+    font-size: 1.5em; }
+  div.ai table {
+    border-collapse: collapse;
+    border: none; }
+    div.ai table tr.middle {
+      border-top: solid white 2px;
+      border-bottom: solid white 2px; }
+    div.ai table td.middle {
+      border-left: solid white 2px;
+      border-right: solid white 2px; }
+    div.ai table td {
+      width: 40px;
+      height: 40px;
+      vertical-align: middle;
+      text-align: center; }
+    div.ai table td.far {
+      background-color: #c8fac8; }
+    div.ai table td.near {
+      background-color: #fae696; }
+    div.ai table td.displayship i {
+      font-size: 2.5em; }
+    div.ai table td.display {
+      text-shadow: 1px 1px black, 1px 0px black, 1px -1px black, -1px 1px black, -1px 0px black, -1px -1px black, 0px 1px black, 0px -1px black; }
+    div.ai table td.display .white {
+      color: white; }
+    div.ai table td.display .red {
+      color: red; }
 
 /*.table-bordered {*/
 /*    border: 1px solid #aaa;*/
