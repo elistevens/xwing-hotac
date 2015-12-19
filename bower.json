@@ -1,6 +1,5 @@
 {
     "name": "hotac",
-    "version": "0.1.0",
     "homepage": "https://github.com/elistevens/hotac",
     "authors": [
         { "name": "Eli Stevens", "homepage": "https://github.com/elistevens" }
@@ -16,7 +15,8 @@
         "tests"
     ],
     "dependencies": {
-        "xwing-miniatures-font": "1.0.12",
-        "jquery": "~2.1.4"
+        "jquery": "~2.1.4",
+        "bootstrap": "~3.3.6",
+        "xwing-miniatures-font": "~1.0.12"
     }
 }
