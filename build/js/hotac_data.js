@@ -71,6 +71,7 @@
     EnemyAi.prototype.initDom = function(elem_id) {
       var bearing, dir, distance, i, len, ref, results, sector, t;
       this.elem_id = elem_id;
+      $("#" + this.elem_id + " .panel-title").text(this.name + " AI");
       $("#" + this.elem_id + " .displayship i").removeClass().addClass("xwing-miniatures-ship xwing-miniatures-ship-" + this.id);
       ref = ['ahead', 'flank', 'behind'];
       results = [];
@@ -120,9 +121,9 @@
       color = this.color_dict[move_str] || 'white';
       console.log(event.data.sector + " " + event.data.distance + ": " + move_str);
       $("#" + this.elem_id + " .display i").removeClass();
-      $("#" + this.elem_id + " .display span").text('');
-      $("#" + this.elem_id + " ." + event.data.sector + "." + event.data.distance + ".display i").addClass("xwing-miniatures-font xwing-miniatures-font-" + move_tup[0] + (move_tup[1] || ''));
-      return $("#" + this.elem_id + " ." + event.data.sector + "." + event.data.distance + ".display span").text(move_tup[2]);
+      $("#" + this.elem_id + " .display span").removeClass().text('');
+      $("#" + this.elem_id + " ." + event.data.sector + "." + event.data.distance + ".display i").addClass("xwing-miniatures-font xwing-miniatures-font-" + move_tup[0] + (move_tup[1] || '') + " " + color);
+      return $("#" + this.elem_id + " ." + event.data.sector + "." + event.data.distance + ".display span").addClass(color).text(move_tup[2]);
     };
 
     EnemyAi.prototype.onClick_ship = function(event) {
@@ -176,6 +177,49 @@
     };
 
     return TieFighter;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.TieInterceptor = (function(superClass) {
+    extend(TieInterceptor, superClass);
+
+    function TieInterceptor() {
+      return TieInterceptor.__super__.constructor.apply(this, arguments);
+    }
+
+    TieInterceptor.prototype.name = 'TIE Interceptor';
+
+    TieInterceptor.prototype.id = 'tieinterceptor';
+
+    TieInterceptor.prototype.color_dict = {
+      kturn3: 'red',
+      kturn5: 'red'
+    };
+
+    TieInterceptor.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 5], ['straight', null, 5], ['straight', null, 5], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3]],
+        near: [['bank', 'left', 2], ['bank', 'right', 2], ['straight', null, 2], ['straight', null, 2], ['kturn', null, 5], ['kturn', null, 5]]
+      },
+      aheadx: {
+        far: [['straight', null, 3], ['bank', 'x', 2], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3]],
+        near: [['straight', null, 2], ['bank', 'x', 2], ['bank', 'x', 2], ['kturn', null, 5], ['kturn', null, 5], ['turn', 'x', 1]]
+      },
+      flankx: {
+        far: [['bank', 'x', 3], ['turn', 'x', 3], ['bank', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1]],
+        near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['turn', 'x', 2], ['kturn', null, 3], ['kturn', null, 5]]
+      },
+      behindx: {
+        far: [['kturn', null, 5], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1]],
+        near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['kturn', null, 3], ['kturn', null, 5], ['kturn', null, 5]]
+      },
+      behind: {
+        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
+        near: [['kturn', null, 5], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 3], ['turn', 'right', 3], ['straight', null, 5]]
+      }
+    };
+
+    return TieInterceptor;
 
   })(EnemyAi);
 
