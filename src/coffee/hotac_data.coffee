@@ -42,17 +42,25 @@ class EnemyAi
 
                         @movement_dict["#{dir}#{bearing}"][dist][index] = move_tup
 
-    initDom: (@elem_id) ->
-        $("##{@elem_id} .panel-title").text("#{@name} AI")
+    initDom: (@ship_str) ->
+        t = @
+        @elem_id = "ai-#{@ship_str}"
+        $("##{@elem_id} .panel-title").text("#{@name}")
         $("##{@elem_id} .displayship i").removeClass()\
                 .addClass("xwing-miniatures-ship xwing-miniatures-ship-#{@id}")
+        $("\#ai-panel \#ai-toggle-#{@ship_str} i").removeClass()\
+                .addClass("xwing-miniatures-ship xwing-miniatures-ship-#{@id}")
+        $("\#ai-panel \#ai-toggle-#{@ship_str}").on(
+                'click',
+                null,
+                null,
+                (event) -> t.onClick_toggle(event))
 
         for dir in ['ahead', 'flank', 'behind']
             for bearing in ['', 'right', 'left']
                 sector = "#{dir}#{bearing}"
                 if sector != 'flank'
                     for distance in ['far', 'near']
-                        t = @
                         $("##{@elem_id} .#{sector}.#{distance}").on(
                                 'click',
                                 null,
@@ -64,6 +72,9 @@ class EnemyAi
                                 null,
                                 null,
                                 (event) -> t.onClick_ship(event))
+
+        if @defaultshow
+            @onClick_toggle()
 
 
     onClick_move: (event) ->
@@ -83,11 +94,16 @@ class EnemyAi
         $("##{@elem_id} .display i").removeClass()
         $("##{@elem_id} .display span").text('')
 
+    onClick_toggle: (event) ->
+        $("##{@elem_id}").toggleClass('displaynone')
+        $("\#ai-panel \#ai-toggle-#{@ship_str}").toggleClass('glow')
+
 
 exportObj.shipAi = {}
 class exportObj.shipAi.TieFighter extends EnemyAi
     name: 'TIE Fighter'
     id: 'tiefighter'
+    defaultshow: true
     color_dict: {kturn3: 'red', kturn4: 'red'}
     genericMovement_dict: {
         ahead: {
@@ -156,7 +172,6 @@ class exportObj.shipAi.TieFighter extends EnemyAi
         },
         behind: {
             far: [
-                ['kturn', null, 3],
                 ['kturn', null, 3],
                 ['kturn', null, 3],
                 ['kturn', null, 3],
@@ -248,7 +263,6 @@ class exportObj.shipAi.TieInterceptor extends EnemyAi
                 ['kturn', null, 3],
                 ['kturn', null, 3],
                 ['kturn', null, 3],
-                ['kturn', null, 3],
                 ['turn', 'left', 1],
                 ['turn', 'right', 1]],
             near: [
@@ -258,6 +272,93 @@ class exportObj.shipAi.TieInterceptor extends EnemyAi
                 ['turn', 'left', 3],
                 ['turn', 'right', 3],
                 ['straight', null, 5]],
+        },
+    }
+
+class exportObj.shipAi.TieAdvanced extends EnemyAi
+    name: 'TIE Advanced'
+    id: 'tieadvanced'
+    color_dict: {kturn4: 'red'}
+    genericMovement_dict: {
+        ahead: {
+            far: [
+                ['straight', null, 5],
+                ['straight', null, 5],
+                ['straight', null, 5],
+                ['straight', null, 4],
+                ['straight', null, 4],
+                ['straight', null, 3]],
+            near: [
+                ['bank', 'left', 1],
+                ['bank', 'right', 1],
+                ['straight', null, 2],
+                ['straight', null, 2],
+                ['kturn', null, 4],
+                ['kturn', null, 4]],
+        },
+        aheadx: {
+            far: [
+                ['straight', null, 3],
+                ['bank', 'x', 2],
+                ['bank', 'x', 3],
+                ['bank', 'x', 3],
+                ['bank', 'x', 3],
+                ['turn', 'x', 3]],
+            near: [
+                ['straight', null, 2],
+                ['bank', 'x', 1],
+                ['bank', 'x', 1],
+                ['bank', 'x', 1],
+                ['kturn', null, 4],
+                ['kturn', null, 4]],
+        },
+        flankx: {
+            far: [
+                ['bank', 'x', 1],
+                ['bank', 'x', 2],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2],
+                ['turn', 'x', 3],
+                ['turn', 'x', 3]],
+            near: [
+                ['bank', 'x', 1],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2]],
+        },
+        behindx: {
+            far: [
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2]],
+            near: [
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['turn', 'x', 2],
+                ['turn', 'x', 2],
+                ['bank', 'x', 1]],
+        },
+        behind: {
+            far: [
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['turn', 'left', 2],
+                ['turn', 'right', 2]],
+            near: [
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['kturn', null, 4],
+                ['turn', 'left', 3],
+                ['turn', 'right', 3]],
         },
     }
 

@@ -68,50 +68,44 @@
       }
     }
 
-    EnemyAi.prototype.initDom = function(elem_id) {
-      var bearing, dir, distance, i, len, ref, results, sector, t;
-      this.elem_id = elem_id;
-      $("#" + this.elem_id + " .panel-title").text(this.name + " AI");
+    EnemyAi.prototype.initDom = function(ship_str) {
+      var bearing, dir, distance, i, j, k, len, len1, len2, ref, ref1, ref2, sector, t;
+      this.ship_str = ship_str;
+      t = this;
+      this.elem_id = "ai-" + this.ship_str;
+      $("#" + this.elem_id + " .panel-title").text("" + this.name);
       $("#" + this.elem_id + " .displayship i").removeClass().addClass("xwing-miniatures-ship xwing-miniatures-ship-" + this.id);
+      $("\#ai-panel \#ai-toggle-" + this.ship_str + " i").removeClass().addClass("xwing-miniatures-ship xwing-miniatures-ship-" + this.id);
+      $("\#ai-panel \#ai-toggle-" + this.ship_str).on('click', null, null, function(event) {
+        return t.onClick_toggle(event);
+      });
       ref = ['ahead', 'flank', 'behind'];
-      results = [];
       for (i = 0, len = ref.length; i < len; i++) {
         dir = ref[i];
-        results.push((function() {
-          var j, len1, ref1, results1;
-          ref1 = ['', 'right', 'left'];
-          results1 = [];
-          for (j = 0, len1 = ref1.length; j < len1; j++) {
-            bearing = ref1[j];
-            sector = "" + dir + bearing;
-            if (sector !== 'flank') {
-              results1.push((function() {
-                var k, len2, ref2, results2;
-                ref2 = ['far', 'near'];
-                results2 = [];
-                for (k = 0, len2 = ref2.length; k < len2; k++) {
-                  distance = ref2[k];
-                  t = this;
-                  $("#" + this.elem_id + " ." + sector + "." + distance).on('click', null, {
-                    'sector': sector,
-                    'distance': distance
-                  }, function(event) {
-                    return t.onClick_move(event);
-                  });
-                  results2.push($("#" + this.elem_id + " .displayship").on('click', null, null, function(event) {
-                    return t.onClick_ship(event);
-                  }));
-                }
-                return results2;
-              }).call(this));
-            } else {
-              results1.push(void 0);
+        ref1 = ['', 'right', 'left'];
+        for (j = 0, len1 = ref1.length; j < len1; j++) {
+          bearing = ref1[j];
+          sector = "" + dir + bearing;
+          if (sector !== 'flank') {
+            ref2 = ['far', 'near'];
+            for (k = 0, len2 = ref2.length; k < len2; k++) {
+              distance = ref2[k];
+              $("#" + this.elem_id + " ." + sector + "." + distance).on('click', null, {
+                'sector': sector,
+                'distance': distance
+              }, function(event) {
+                return t.onClick_move(event);
+              });
+              $("#" + this.elem_id + " .displayship").on('click', null, null, function(event) {
+                return t.onClick_ship(event);
+              });
             }
           }
-          return results1;
-        }).call(this));
+        }
       }
-      return results;
+      if (this.defaultshow) {
+        return this.onClick_toggle();
+      }
     };
 
     EnemyAi.prototype.onClick_move = function(event) {
@@ -131,6 +125,11 @@
       return $("#" + this.elem_id + " .display span").text('');
     };
 
+    EnemyAi.prototype.onClick_toggle = function(event) {
+      $("#" + this.elem_id).toggleClass('displaynone');
+      return $("\#ai-panel \#ai-toggle-" + this.ship_str).toggleClass('glow');
+    };
+
     return EnemyAi;
 
   })();
@@ -147,6 +146,8 @@
     TieFighter.prototype.name = 'TIE Fighter';
 
     TieFighter.prototype.id = 'tiefighter';
+
+    TieFighter.prototype.defaultshow = true;
 
     TieFighter.prototype.color_dict = {
       kturn3: 'red',
@@ -171,7 +172,7 @@
         near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['kturn', null, 3], ['kturn', null, 4], ['kturn', null, 4]]
       },
       behind: {
-        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
+        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
         near: [['kturn', null, 4], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 3], ['turn', 'right', 3], ['straight', null, 5]]
       }
     };
@@ -214,12 +215,54 @@
         near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['kturn', null, 3], ['kturn', null, 5], ['kturn', null, 5]]
       },
       behind: {
-        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
+        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
         near: [['kturn', null, 5], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 3], ['turn', 'right', 3], ['straight', null, 5]]
       }
     };
 
     return TieInterceptor;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.TieAdvanced = (function(superClass) {
+    extend(TieAdvanced, superClass);
+
+    function TieAdvanced() {
+      return TieAdvanced.__super__.constructor.apply(this, arguments);
+    }
+
+    TieAdvanced.prototype.name = 'TIE Advanced';
+
+    TieAdvanced.prototype.id = 'tieadvanced';
+
+    TieAdvanced.prototype.color_dict = {
+      kturn4: 'red'
+    };
+
+    TieAdvanced.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 5], ['straight', null, 5], ['straight', null, 5], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3]],
+        near: [['bank', 'left', 1], ['bank', 'right', 1], ['straight', null, 2], ['straight', null, 2], ['kturn', null, 4], ['kturn', null, 4]]
+      },
+      aheadx: {
+        far: [['straight', null, 3], ['bank', 'x', 2], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3]],
+        near: [['straight', null, 2], ['bank', 'x', 1], ['bank', 'x', 1], ['bank', 'x', 1], ['kturn', null, 4], ['kturn', null, 4]]
+      },
+      flankx: {
+        far: [['bank', 'x', 1], ['bank', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 3]],
+        near: [['bank', 'x', 1], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2]]
+      },
+      behindx: {
+        far: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2]],
+        near: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1]]
+      },
+      behind: {
+        far: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'left', 2], ['turn', 'right', 2]],
+        near: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'left', 3], ['turn', 'right', 3]]
+      }
+    };
+
+    return TieAdvanced;
 
   })(EnemyAi);
 

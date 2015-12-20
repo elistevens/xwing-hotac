@@ -1,78 +1,85 @@
-each ship_str in ship_list
+div.panel.panel-default#ai-panel
+    div.panel-heading
+        h1.panel-title Ship AIs:
+            span
+            each ship_str in ship_list
+                span.displayship.ai-toggle(id="ai-toggle-#{ship_str}")
+                    i
+    div.panel-body
+        each ship_str in ship_list
+            div.panel.panel-default.ai.displaynone(id="ai-#{ship_str}")
+                div.panel-heading
+                    h2.panel-title
+                div.panel-body
+                    table
+                        tr
+                            td.far.aheadleft.display
+                                i
+                                span.speed
+                            td.far.aheadleft
+                            td.far.ahead.display.middle
+                                i
+                                span.speed
+                            td.far.aheadright
+                            td.far.aheadright.display
+                                i
+                                span.speed
+                        tr
+                            td.far.aheadleft
+                            td.near.aheadleft.display
+                                i
+                                span.speed
+                            td.near.ahead.display.middle
+                                i
+                                span.speed
+                            td.near.aheadright.display
+                                i
+                                span.speed
+                            td.far.aheadright
 
-    div.panel.panel-default.ai(id="ai-#{ship_str}")
-        div.panel-heading
-            h3.panel-title
-        div.panel-body
-            table
-                tr
-                    td.far.aheadleft.display
-                        i
-                        span.speed
-                    td.far.aheadleft
-                    td.far.ahead.display.middle
-                        i
-                        span.speed
-                    td.far.aheadright
-                    td.far.aheadright.display
-                        i
-                        span.speed
-                tr
-                    td.far.aheadleft
-                    td.near.aheadleft.display
-                        i
-                        span.speed
-                    td.near.ahead.display.middle
-                        i
-                        span.speed
-                    td.near.aheadright.display
-                        i
-                        span.speed
-                    td.far.aheadright
+                        tr.middle
+                            td.far.flankleft.display
+                                i
+                                span.speed
+                            td.near.flankleft.display
+                                i
+                                span.speed
+                            td.displayship.middle
+                                i
+                            td.near.flankright.display
+                                i
+                                span.speed
+                            td.far.flankright.display
+                                i
+                                span.speed
 
-                tr.middle
-                    td.far.flankleft.display
-                        i
-                        span.speed
-                    td.near.flankleft.display
-                        i
-                        span.speed
-                    td.displayship.middle
-                        i
-                    td.near.flankright.display
-                        i
-                        span.speed
-                    td.far.flankright.display
-                        i
-                        span.speed
+                        tr
+                            td.far.behindleft
+                            td.near.behindleft.display
+                                i
+                                span.speed
+                            td.near.behind.display.middle
+                                i
+                                span.speed
+                            td.near.behindright.display
+                                i
+                                span.speed
+                            td.far.behindright
 
-                tr
-                    td.far.behindleft
-                    td.near.behindleft.display
-                        i
-                        span.speed
-                    td.near.behind.display.middle
-                        i
-                        span.speed
-                    td.near.behindright.display
-                        i
-                        span.speed
-                    td.far.behindright
+                        tr
+                            td.far.behindleft.display
+                                i
+                                span.speed
+                            td.far.behindleft
+                            td.far.behind.display.middle
+                                i
+                                span.speed
+                            td.far.behindright
+                            td.far.behindright.display
+                                i
+                                span.speed
 
-                tr
-                    td.far.behindleft.display
-                        i
-                        span.speed
-                    td.far.behindleft
-                    td.far.behind.display.middle
-                        i
-                        span.speed
-                    td.far.behindright
-                    td.far.behindright.display
-                        i
-                        span.speed
-
-        script
-            | var #{ship_str}_instance = new window.shipAi["#{ship_str}"]()
-            | #{ship_str}_instance.initDom("ai-#{ship_str}")
+                script
+                    | var #{ship_str}_instance = new window.shipAi["#{ship_str}"]()
+                    | #{ship_str}_instance.initDom("#{ship_str}")
 

@@ -1,34 +1,44 @@
-@font-face {
-  font-family: kimberley;
-  src: url('../../fonts/kimberley bl.ttf');
-}
-@font-face {
-  font-family: EurostileStandard;
-  src: url('../../fonts/EurostileLTStd.otf');
-}
-@font-face {
-  font-family: EurostileStandardBold;
-  src: url('../../fonts/EurostileLTStd-Bold.otf');
-}
-@font-face {
-  font-family: EurostileStandardOblique;
-  src: url('../../fonts/EurostileLTStd-Oblique.otf');
-}
-@font-face {
-  font-family: EurostileStandardBoldOblique;
-  src: url('../../fonts/EurostileLTStd-BoldOblique.otf');
-}
-@font-face{
-  font-family: BankGothicMediumBT;
-  src: url('../../fonts/Bank Gothic Medium BT.ttf');
-}
-@font-face {
-  font-family: BankGothicHD;
-  src: url('../../fonts/bankgthd.ttf');
-}
-
 body {
     font-family: EurostileStandard;
+}
+
+.displaynone {
+    display: none;
+}
+.glow {
+    color: midnightblue;
+    text-shadow: 0px 0px 3px deepskyblue;
+}
+
+.displayship i {
+    font-size: 35px;
+}
+/*
+div.shipicons {
+    float: right;
+}
+div.ai-toggle {
+    float: left;
+}
+*/
+.panel-heading {
+    .panel-title, i {
+        vertical-align: middle;
+        padding-left: 0.3em;
+    }
+
+}
+.panel-title {
+    font-family: BankGothicHD;
+    display: inline;
+}
+h1.panel-title {
+    font-size: 24px;
+}
+
+
+#ai-panel > .panel-body {
+    min-height: 310px;
 }
 
 div.ai {
@@ -66,17 +76,14 @@ div.ai {
         td.near {
             background-color: rgb(250, 230, 150);
         }
-        td.displayship i {
-            font-size: 2.5em;
-        }
         td.display {
-            text-shadow: 1px 1px black,
+            text-shadow: 0.7px 0.7px black,
                     1px 0px black,
-                    1px -1px black,
+                    0.7px -0.7px black,
 
-                    -1px 1px black,
+                    -0.7px 0.7px black,
                     -1px 0px black,
-                    -1px -1px black,
+                    -0.7px -0.7px black,
 
                     0px 1px black,
                     0px -1px black;
@@ -85,7 +92,7 @@ div.ai {
             color: white;
         }
         td.display .red {
-            color: red;
+            color: #f89;
         }
 
     }
