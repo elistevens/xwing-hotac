@@ -13,7 +13,7 @@
   <body>
     <div id="ai-panel" class="panel panel-default">
       <div class="panel-heading">
-        <h1 class="panel-title">Ship AIs:<span></span><span id="ai-toggle-TieFighter" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieInterceptor" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieAdvanced" class="displayship ai-toggle"><i></i></span>
+        <h1 class="panel-title">Ship AIs:<span></span><span id="ai-toggle-TieFighter" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieInterceptor" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieAdvanced" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieBomber" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TieDefender" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-TiePhantom" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-LambdaShuttle" class="displayship ai-toggle"><i></i></span><span id="ai-toggle-Vt49Decimator" class="displayship ai-toggle"><i></i></span>
         </h1>
       </div>
       <div class="panel-body">
@@ -159,6 +159,246 @@
           <script>
             var TieAdvanced_instance = new window.shipAi["TieAdvanced"]()
             TieAdvanced_instance.initDom("TieAdvanced")
+          </script>
+        </div>
+        <div id="ai-TieBomber" class="panel panel-default ai displaynone">
+          <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td class="far aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="far aheadleft"></td>
+                <td class="far ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+                <td class="far aheadright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far aheadleft"></td>
+                <td class="near aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="near ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="near aheadright display"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+              </tr>
+              <tr class="middle">
+                <td class="far flankleft display"><i></i><span class="speed"></span></td>
+                <td class="near flankleft display"><i></i><span class="speed"></span></td>
+                <td class="displayship middle"><i></i></td>
+                <td class="near flankright display"><i></i><span class="speed"></span></td>
+                <td class="far flankright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far behindleft"></td>
+                <td class="near behindleft display"><i></i><span class="speed"></span></td>
+                <td class="near behind display middle"><i></i><span class="speed"></span></td>
+                <td class="near behindright display"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+              </tr>
+              <tr>
+                <td class="far behindleft display"><i></i><span class="speed"></span></td>
+                <td class="far behindleft"></td>
+                <td class="far behind display middle"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+                <td class="far behindright display"><i></i><span class="speed"></span></td>
+              </tr>
+            </table>
+          </div>
+          <script>
+            var TieBomber_instance = new window.shipAi["TieBomber"]()
+            TieBomber_instance.initDom("TieBomber")
+          </script>
+        </div>
+        <div id="ai-TieDefender" class="panel panel-default ai displaynone">
+          <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td class="far aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="far aheadleft"></td>
+                <td class="far ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+                <td class="far aheadright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far aheadleft"></td>
+                <td class="near aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="near ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="near aheadright display"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+              </tr>
+              <tr class="middle">
+                <td class="far flankleft display"><i></i><span class="speed"></span></td>
+                <td class="near flankleft display"><i></i><span class="speed"></span></td>
+                <td class="displayship middle"><i></i></td>
+                <td class="near flankright display"><i></i><span class="speed"></span></td>
+                <td class="far flankright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far behindleft"></td>
+                <td class="near behindleft display"><i></i><span class="speed"></span></td>
+                <td class="near behind display middle"><i></i><span class="speed"></span></td>
+                <td class="near behindright display"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+              </tr>
+              <tr>
+                <td class="far behindleft display"><i></i><span class="speed"></span></td>
+                <td class="far behindleft"></td>
+                <td class="far behind display middle"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+                <td class="far behindright display"><i></i><span class="speed"></span></td>
+              </tr>
+            </table>
+          </div>
+          <script>
+            var TieDefender_instance = new window.shipAi["TieDefender"]()
+            TieDefender_instance.initDom("TieDefender")
+          </script>
+        </div>
+        <div id="ai-TiePhantom" class="panel panel-default ai displaynone">
+          <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td class="far aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="far aheadleft"></td>
+                <td class="far ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+                <td class="far aheadright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far aheadleft"></td>
+                <td class="near aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="near ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="near aheadright display"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+              </tr>
+              <tr class="middle">
+                <td class="far flankleft display"><i></i><span class="speed"></span></td>
+                <td class="near flankleft display"><i></i><span class="speed"></span></td>
+                <td class="displayship middle"><i></i></td>
+                <td class="near flankright display"><i></i><span class="speed"></span></td>
+                <td class="far flankright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far behindleft"></td>
+                <td class="near behindleft display"><i></i><span class="speed"></span></td>
+                <td class="near behind display middle"><i></i><span class="speed"></span></td>
+                <td class="near behindright display"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+              </tr>
+              <tr>
+                <td class="far behindleft display"><i></i><span class="speed"></span></td>
+                <td class="far behindleft"></td>
+                <td class="far behind display middle"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+                <td class="far behindright display"><i></i><span class="speed"></span></td>
+              </tr>
+            </table>
+          </div>
+          <script>
+            var TiePhantom_instance = new window.shipAi["TiePhantom"]()
+            TiePhantom_instance.initDom("TiePhantom")
+          </script>
+        </div>
+        <div id="ai-LambdaShuttle" class="panel panel-default ai displaynone">
+          <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td class="far aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="far aheadleft"></td>
+                <td class="far ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+                <td class="far aheadright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far aheadleft"></td>
+                <td class="near aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="near ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="near aheadright display"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+              </tr>
+              <tr class="middle">
+                <td class="far flankleft display"><i></i><span class="speed"></span></td>
+                <td class="near flankleft display"><i></i><span class="speed"></span></td>
+                <td class="displayship middle"><i></i></td>
+                <td class="near flankright display"><i></i><span class="speed"></span></td>
+                <td class="far flankright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far behindleft"></td>
+                <td class="near behindleft display"><i></i><span class="speed"></span></td>
+                <td class="near behind display middle"><i></i><span class="speed"></span></td>
+                <td class="near behindright display"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+              </tr>
+              <tr>
+                <td class="far behindleft display"><i></i><span class="speed"></span></td>
+                <td class="far behindleft"></td>
+                <td class="far behind display middle"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+                <td class="far behindright display"><i></i><span class="speed"></span></td>
+              </tr>
+            </table>
+          </div>
+          <script>
+            var LambdaShuttle_instance = new window.shipAi["LambdaShuttle"]()
+            LambdaShuttle_instance.initDom("LambdaShuttle")
+          </script>
+        </div>
+        <div id="ai-Vt49Decimator" class="panel panel-default ai displaynone">
+          <div class="panel-heading">
+            <h2 class="panel-title"></h2>
+          </div>
+          <div class="panel-body">
+            <table>
+              <tr>
+                <td class="far aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="far aheadleft"></td>
+                <td class="far ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+                <td class="far aheadright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far aheadleft"></td>
+                <td class="near aheadleft display"><i></i><span class="speed"></span></td>
+                <td class="near ahead display middle"><i></i><span class="speed"></span></td>
+                <td class="near aheadright display"><i></i><span class="speed"></span></td>
+                <td class="far aheadright"></td>
+              </tr>
+              <tr class="middle">
+                <td class="far flankleft display"><i></i><span class="speed"></span></td>
+                <td class="near flankleft display"><i></i><span class="speed"></span></td>
+                <td class="displayship middle"><i></i></td>
+                <td class="near flankright display"><i></i><span class="speed"></span></td>
+                <td class="far flankright display"><i></i><span class="speed"></span></td>
+              </tr>
+              <tr>
+                <td class="far behindleft"></td>
+                <td class="near behindleft display"><i></i><span class="speed"></span></td>
+                <td class="near behind display middle"><i></i><span class="speed"></span></td>
+                <td class="near behindright display"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+              </tr>
+              <tr>
+                <td class="far behindleft display"><i></i><span class="speed"></span></td>
+                <td class="far behindleft"></td>
+                <td class="far behind display middle"><i></i><span class="speed"></span></td>
+                <td class="far behindright"></td>
+                <td class="far behindright display"><i></i><span class="speed"></span></td>
+              </tr>
+            </table>
+          </div>
+          <script>
+            var Vt49Decimator_instance = new window.shipAi["Vt49Decimator"]()
+            Vt49Decimator_instance.initDom("Vt49Decimator")
           </script>
         </div>
       </div>

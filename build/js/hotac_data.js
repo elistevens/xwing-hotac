@@ -53,6 +53,9 @@
           ref2 = ['far', 'near'];
           for (k = 0, len2 = ref2.length; k < len2; k++) {
             dist = ref2[k];
+            if (this.genericMovement_dict[dir + "x"][dist].length !== 6) {
+              console.log(this.name + " " + dir + " " + dist + " length " + this.genericMovement_dict[dir + "x"][dist].length);
+            }
             this.movement_dict["" + dir + bearing][dist] = [];
             ref3 = this.genericMovement_dict[dir + "x"][dist];
             for (index = l = 0, len3 = ref3.length; l < len3; index = ++l) {
@@ -60,6 +63,13 @@
               move_tup = clone(move_tup);
               if (move_tup[1] === 'x') {
                 move_tup[1] = bearing;
+              }
+              if (move_tup[1] === 'y') {
+                if (bearing === 'left') {
+                  move_tup[1] = 'right';
+                } else {
+                  move_tup[1] = 'left';
+                }
               }
               this.movement_dict["" + dir + bearing][dist][index] = move_tup;
             }
@@ -192,6 +202,8 @@
 
     TieInterceptor.prototype.id = 'tieinterceptor';
 
+    TieInterceptor.prototype.defaultshow = true;
+
     TieInterceptor.prototype.color_dict = {
       kturn3: 'red',
       kturn5: 'red'
@@ -263,6 +275,224 @@
     };
 
     return TieAdvanced;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.TieBomber = (function(superClass) {
+    extend(TieBomber, superClass);
+
+    function TieBomber() {
+      return TieBomber.__super__.constructor.apply(this, arguments);
+    }
+
+    TieBomber.prototype.name = 'TIE Bomber';
+
+    TieBomber.prototype.id = 'tiebomber';
+
+    TieBomber.prototype.color_dict = {
+      kturn5: 'red',
+      turnleft2: 'red',
+      turnright2: 'red'
+    };
+
+    TieBomber.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 4], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3], ['straight', null, 3], ['straight', null, 2]],
+        near: [['bank', 'left', 1], ['bank', 'right', 1], ['straight', null, 1], ['straight', null, 1], ['straight', null, 1], ['kturn', null, 5]]
+      },
+      aheadx: {
+        far: [['straight', null, 2], ['bank', 'x', 2], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3]],
+        near: [['turn', 'x', 3], ['straight', null, 1], ['bank', 'x', 1], ['bank', 'x', 1], ['bank', 'x', 1], ['kturn', null, 5]]
+      },
+      flankx: {
+        far: [['bank', 'x', 3], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 3], ['turn', 'x', 3]],
+        near: [['bank', 'x', 1], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2]]
+      },
+      behindx: {
+        far: [['kturn', null, 5], ['kturn', null, 5], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 3]],
+        near: [['kturn', null, 5], ['kturn', null, 5], ['kturn', null, 5], ['turn', 'x', 3], ['turn', 'x', 3], ['turn', 'x', 2]]
+      },
+      behind: {
+        far: [['kturn', null, 5], ['kturn', null, 5], ['kturn', null, 5], ['kturn', null, 5], ['turn', 'left', 2], ['turn', 'right', 2]],
+        near: [['kturn', null, 5], ['kturn', null, 5], ['kturn', null, 5], ['kturn', null, 5], ['turn', 'left', 3], ['turn', 'right', 3]]
+      }
+    };
+
+    return TieBomber;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.TieDefender = (function(superClass) {
+    extend(TieDefender, superClass);
+
+    function TieDefender() {
+      return TieDefender.__super__.constructor.apply(this, arguments);
+    }
+
+    TieDefender.prototype.name = 'TIE Defender';
+
+    TieDefender.prototype.id = 'tiedefender';
+
+    TieDefender.prototype.color_dict = {
+      turnleft1: 'red',
+      turnright1: 'red',
+      turnleft2: 'red',
+      turnright2: 'red'
+    };
+
+    TieDefender.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 5], ['straight', null, 5], ['straight', null, 5], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3]],
+        near: [['bank', 'left', 1], ['bank', 'right', 1], ['straight', null, 2], ['straight', null, 2], ['kturn', null, 4], ['kturn', null, 4]]
+      },
+      aheadx: {
+        far: [['straight', null, 2], ['bank', 'x', 2], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3]],
+        near: [['straight', null, 2], ['bank', 'x', 1], ['bank', 'x', 1], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 1]]
+      },
+      flankx: {
+        far: [['bank', 'x', 3], ['bank', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 3], ['turn', 'x', 3]],
+        near: [['bank', 'x', 1], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 1], ['turn', 'x', 1]]
+      },
+      behindx: {
+        far: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1]],
+        near: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1]]
+      },
+      behind: {
+        far: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'left', 1], ['turn', 'right', 1]],
+        near: [['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'left', 3], ['turn', 'right', 3]]
+      }
+    };
+
+    return TieDefender;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.TiePhantom = (function(superClass) {
+    extend(TiePhantom, superClass);
+
+    function TiePhantom() {
+      return TiePhantom.__super__.constructor.apply(this, arguments);
+    }
+
+    TiePhantom.prototype.name = 'TIE Phantom';
+
+    TiePhantom.prototype.id = 'tiephantom';
+
+    TiePhantom.prototype.color_dict = {
+      kturn3: 'red',
+      kturn4: 'red'
+    };
+
+    TiePhantom.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 4], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3], ['straight', null, 3], ['straight', null, 2]],
+        near: [['bank', 'left', 2], ['bank', 'right', 2], ['straight', null, 2], ['kturn', null, 4], ['kturn', null, 4], ['kturn', null, 4]]
+      },
+      aheadx: {
+        far: [['straight', null, 3], ['bank', 'x', 2], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3]],
+        near: [['straight', null, 2], ['bank', 'x', 2], ['kturn', null, 4], ['kturn', null, 4], ['turn', 'x', 1], ['turn', 'x', 1]]
+      },
+      flankx: {
+        far: [['bank', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1], ['turn', 'x', 1]],
+        near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['turn', 'x', 2], ['kturn', null, 4]]
+      },
+      behindx: {
+        far: [['kturn', null, 4], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 1]],
+        near: [['turn', 'x', 1], ['turn', 'x', 1], ['turn', 'x', 2], ['kturn', null, 3], ['kturn', null, 4], ['kturn', null, 4]]
+      },
+      behind: {
+        far: [['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 1], ['turn', 'right', 1]],
+        near: [['kturn', null, 4], ['kturn', null, 3], ['kturn', null, 3], ['turn', 'left', 3], ['turn', 'right', 3], ['straight', null, 4]]
+      }
+    };
+
+    return TiePhantom;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.LambdaShuttle = (function(superClass) {
+    extend(LambdaShuttle, superClass);
+
+    function LambdaShuttle() {
+      return LambdaShuttle.__super__.constructor.apply(this, arguments);
+    }
+
+    LambdaShuttle.prototype.name = 'Lambda Shuttle';
+
+    LambdaShuttle.prototype.id = 'lambdaclassshuttle';
+
+    LambdaShuttle.prototype.color_dict = {
+      stop0: 'red',
+      turnleft2: 'red',
+      turnright2: 'red',
+      bankleft3: 'red',
+      bankright3: 'red'
+    };
+
+    LambdaShuttle.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 3], ['straight', null, 3], ['straight', null, 3], ['straight', null, 2], ['straight', null, 2], ['straight', null, 1]],
+        near: [['stop', null, 0], ['stop', null, 0], ['stop', null, 0], ['straight', null, 1], ['bank', 'left', 1], ['bank', 'right', 1]]
+      },
+      aheadx: {
+        far: [['straight', null, 2], ['bank', 'x', 3], ['bank', 'x', 2], ['bank', 'x', 2], ['bank', 'x', 2], ['turn', 'x', 2]],
+        near: [['stop', null, 0], ['straight', null, 1], ['bank', 'x', 1], ['bank', 'x', 1], ['bank', 'x', 1], ['turn', 'x', 2]]
+      },
+      flankx: {
+        far: [['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 2], ['bank', 'x', 3]],
+        near: [['stop', null, 0], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1], ['bank', 'x', 2]]
+      },
+      behindx: {
+        far: [['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1], ['bank', 'x', 1]],
+        near: [['stop', null, 0], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 2], ['bank', 'x', 3]]
+      },
+      behind: {
+        far: [['turn', 'left', 2], ['turn', 'left', 2], ['turn', 'left', 2], ['turn', 'right', 2], ['turn', 'right', 2], ['turn', 'right', 2]],
+        near: [['stop', null, 0], ['stop', null, 0], ['turn', 'left', 2], ['turn', 'right', 2], ['bank', 'left', 3], ['bank', 'right', 3]]
+      }
+    };
+
+    return LambdaShuttle;
+
+  })(EnemyAi);
+
+  exportObj.shipAi.Vt49Decimator = (function(superClass) {
+    extend(Vt49Decimator, superClass);
+
+    function Vt49Decimator() {
+      return Vt49Decimator.__super__.constructor.apply(this, arguments);
+    }
+
+    Vt49Decimator.prototype.name = 'VT-49 Decimator';
+
+    Vt49Decimator.prototype.id = 'vt49decimator';
+
+    Vt49Decimator.prototype.color_dict = {};
+
+    Vt49Decimator.prototype.genericMovement_dict = {
+      ahead: {
+        far: [['straight', null, 4], ['straight', null, 4], ['straight', null, 4], ['straight', null, 3], ['straight', null, 3], ['straight', null, 2]],
+        near: [['straight', null, 4], ['straight', null, 4], ['bank', 'left', 3], ['bank', 'right', 3], ['turn', 'left', 3], ['turn', 'right', 3]]
+      },
+      aheadx: {
+        far: [['straight', null, 4], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 2], ['turn', 'x', 3]],
+        near: [['straight', null, 4], ['straight', null, 4], ['bank', 'x', 3], ['bank', 'y', 3], ['bank', 'y', 2], ['turn', 'y', 2]]
+      },
+      flankx: {
+        far: [['bank', 'x', 3], ['turn', 'x', 3], ['turn', 'x', 3], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1]],
+        near: [['bank', 'x', 3], ['bank', 'x', 3], ['turn', 'x', 3], ['bank', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1]]
+      },
+      behindx: {
+        far: [['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 3], ['turn', 'x', 3], ['bank', 'x', 1]],
+        near: [['bank', 'x', 3], ['bank', 'x', 3], ['bank', 'x', 2], ['turn', 'x', 2], ['turn', 'x', 2], ['bank', 'x', 1]]
+      },
+      behind: {
+        far: [['turn', 'left', 2], ['turn', 'left', 2], ['turn', 'left', 2], ['turn', 'right', 2], ['turn', 'right', 2], ['turn', 'right', 2]],
+        near: [['turn', 'left', 3], ['turn', 'left', 2], ['bank', 'left', 1], ['turn', 'right', 3], ['turn', 'right', 2], ['bank', 'right', 1]]
+      }
+    };
+
+    return Vt49Decimator;
 
   })(EnemyAi);
 

@@ -1,4 +1,7 @@
 {
     "pageTitle": "HotAC Web Helper",
-    "ship_list": ["TieFighter", "TieInterceptor", "TieAdvanced"]
+    "ship_list": ["TieFighter", "TieInterceptor",
+        "TieAdvanced", "TieBomber",
+        "TieDefender", "TiePhantom",
+        "LambdaShuttle", "Vt49Decimator"]
 }
